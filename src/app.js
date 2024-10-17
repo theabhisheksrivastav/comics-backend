@@ -2,7 +2,12 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocs from '../swagger.js';
+
 const app = express()
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
